@@ -11,5 +11,5 @@ clean:
 install:
 	$(MAKE) -C $(KERNEL_DIR) SUBDIRS=$(PWD) modules_install
 else
-     obj-m := kinterval.o
+     obj-m := kinterval.o kinterval-example.o
 endif
