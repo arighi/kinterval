@@ -19,3 +19,32 @@ accordingly).
 
 Reference:
   [1] "Introduction to Algorithms" by Cormen, Leiserson, Rivest and Stein
+
+Example
+=======
+
+$ make
+make -C /lib/modules/`uname -r`/build SUBDIRS=/home/righiandr/projects/linux/kinterval modules
+make[1]: Entering directory `/usr/src/linux-headers-3.2.0-24-generic'
+  CC [M]  /home/righiandr/projects/linux/kinterval/kinterval.o
+  CC [M]  /home/righiandr/projects/linux/kinterval/kinterval-example.o
+  Building modules, stage 2.
+  MODPOST 2 modules
+  CC      /home/righiandr/projects/linux/kinterval/kinterval-example.mod.o
+  LD [M]  /home/righiandr/projects/linux/kinterval/kinterval-example.ko
+  CC      /home/righiandr/projects/linux/kinterval/kinterval.mod.o
+  LD [M]  /home/righiandr/projects/linux/kinterval/kinterval.ko
+make[1]: Leaving directory `/usr/src/linux-headers-3.2.0-24-generic'
+$ sudo insmod kinterval.ko
+$ sudo insmod kinterval-example.ko
+$ cat /proc/kinterval
+tree dump:
+  start=3 end=5 type=1 (noreuse)
+  start=5 end=306 type=0 (normal)
+  start=306 end=2288 type=1 (noreuse)
+  start=2771 end=3595 type=0 (normal)
+  start=4127 end=6944 type=0 (normal)
+  start=9206 end=9846 type=0 (normal)
+  start=9883 end=9906 type=1 (noreuse)
+  start=9907 end=9985 type=0 (normal)
+address 6274: type 0x0 normal
